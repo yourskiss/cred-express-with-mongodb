@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>About</title>
+
+    <link href="/aboutus.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="responsive-container-block bigContainer">
+        
+        <div class="responsive-container-block Container">
+            <div class="responsive-container-block leftSide">
+                <%- include("team-header") %>
+                <p class="text-blk subHeading">
+                    Semaj Africa is an online education platform that delivers video courses, programs and resources for Individual, Advertising &amp; Media Specialist, Online Marketing Professionals, Freelancers and anyone looking to pursue a career in digital marketing, Accounting, Web development, Programming. Multimedia and CAD design.
+                </p>
+                <ul  class="text-blk subHeading">
+                   <% teamdata.map((item) => { %>
+                        <li ><%= item.name %> - <%= item.age %> - <%= item.post %></li>
+                    <% }); %>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
