@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User List</title>
+</head>
+<body>
+  <h1>Users Details - Model-View-Controller (MVC) pattern</h1>
+  <table border="1" cellpadding="10" cellspacing="0">
+      <tr>
+        <th>SN</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Mobile</th>
+      </tr>
+    <% users.map((user,index) => { %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= user.name %></td>
+        <td><%= user.city %></td>
+        <td><%= user.mobile %></td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

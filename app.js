@@ -1,10 +1,12 @@
 import express from "express";
 import path from "path";
-import { PORT } from "./env.js";
+import { PORT } from "./config/env.js";
 const app = express();
 
 import { procutsRoute } from "./routes/product.route.js";
 import { blogsRoute } from "./routes/blog.route.js";
+import GetUsers  from "./controllers/userController.js";
+import { studentRoute } from "./routes/student.routes.js";
 
    // console.log("File name: ", import.meta.filename);
    // console.log("Directory name: ", import.meta.dirname);
@@ -22,27 +24,32 @@ app.get("/",(req, res) => {
     res.send(`<h1>Welcome to Expressjs</h1>`);
 });
 
+// mvc
+app.get('/users', GetUsers);
+
+
+
 // html file show 
 app.get("/about",(req, res) => {
     const aboutuspage = path.join(publicpath, "aboutus.html")
     res.sendFile(aboutuspage);
 });
 
-// single params ====>> /product/productid
+// single params ====>> /product/id
 app.get("/product/:id",(req, res) => { 
     res.send(`<h1>Product ID: ${req.params.id}</h1>`);
 });
 
-// multiple params ====>> /service/serviceid/slug
-app.get("/service/:id/:slug",(req, res) => { 
+// multiple params ====>> /product/id/slug
+app.get("/product/:id/:slug",(req, res) => { 
     const formatedSlug = req.params.slug.replace(/-/g, " ");
-    res.send(`<h1>Service ID: ${req.params.id}</h1> <h1>Service Name: ${formatedSlug}</h1>`);
+    res.send(`<h1>product ID: ${req.params.id}</h1> <h1>product Name: ${formatedSlug}</h1>`);
 });
 
-// query string ====>> /user?userid=1&username=ram
-app.get("/user",(req, res) => { 
+// query string ====>> /product?id=1&name=ram
+app.get("/products",(req, res) => { 
     console.log(req.query)
-    res.send(`<h1>User ID: ${req.query.userid}</h1> <h1>User Name: ${req.query.username}</h1>`);
+    res.send(`<h1>User ID: ${req.query.id}</h1> <h1>User Name: ${req.query.name}</h1>`);
 });
 
 // Handle Form Submission
@@ -79,6 +86,12 @@ app.get("/team",(req, res) => {
     ]
    return res.render('team', { teamdata });
 });
+
+
+
+
+app.use(studentRoute);
+
 
 
 

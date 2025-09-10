@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student List</title>
+</head>
+<body>
+  <h1>Student List</h1>
+  <table border="1" cellpadding="10" cellspacing="0">
+      <tr>
+        <th>SN</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+      </tr>
+    <% studentList.map((user,index) => { %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= user.fullname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.mobile %></td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>
