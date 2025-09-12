@@ -28,6 +28,15 @@ export async function getAllStudent() {
   return await db.collection(collection_student).find({}).toArray();
 }
 
+// show filtered student
+export async function filterStudentByName(search = '') {
+  const db = await connectDB();
+  const query = search
+    ? { fullname: { $regex: new RegExp(search, 'i') } } // Case-insensitive search
+    : {};
+  return await db.collection(collection_student).find(query).toArray();
+}
+
 
 // show student by name
 export async function findStudentByName(name) {

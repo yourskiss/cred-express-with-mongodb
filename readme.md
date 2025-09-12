@@ -1,23 +1,25 @@
-This project is built using Express.js and MongoDB (hosted on MongoDB Atlas).
-It manages user records and supports basic CRUD operations.
+This project is built using Express.js and MongoDB (hosted on MongoDB Atlas). 
+It follows the MVC (Model-View-Controller) pattern and supports basic CRUD operations to manage student records efficiently.
+<br /><br />
 
-Features
-✅ Create a new user (manually or using randomuser API)
-📝 Edit an existing user
-❌ Delete a user
-👁️ View all users
-🔍 Search user by name
-📄 View user detail by ID
+<h2>Features</h2>
+✅ Create Student =>	Add a new student to the database <br />
+📝 Edit Student =>	Update existing student details <br />
+❌ Delete Student =>	Remove a student record <br />
+👁️ View All Students =>	Display a list of all students <br />
+📄 View Student by ID =>	View detailed info of a student by ID  <br />
+🔍 Search Student by Name =>	Filter students using a name query <br />
 
+<br /><br />
 
-Tech Stack
-Express.js => Backend framework (Node.js)
-MongoDB Atlas => Cloud-hosted NoSQL database
-Mongoose => ODM for MongoDB in Node.js
-Random.com  => Host the application
-GitHub => Version control and collaboration
+<h2>Tech Stack</h2>
+Express.js => Node.js web framework for backend logic <br />
+MongoDB Atlas => Cloud-hosted NoSQL database <br />
+Random.com  => Hosting the live application  <br />
+GitHub => Version control and collaboration <br />
 
-
+<br /><br />
+<hr /><hr />
 ================ setting environment  ================
 Go to  => Edit the system environment variables
 Go to  => Environment Variables

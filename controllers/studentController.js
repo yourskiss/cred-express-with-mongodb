@@ -1,5 +1,5 @@
  import { ObjectId } from 'mongodb';
-import { addNewStudent, getAllStudent, findStudentByName, deleteStudentById, findStudentById, updateStudentById } from "../models/studentModel.js";
+import { addNewStudent, getAllStudent, filterStudentByName, findStudentByName, deleteStudentById, findStudentById, updateStudentById } from "../models/studentModel.js";
 
 
 
@@ -12,7 +12,25 @@ export const ShowAllStudent = async (req, res) => {
     }
     res.render('studentList', { studentList });
 }
- 
+  
+
+// show filtered student
+export const FilerStudent = async (req, res) => {
+  const search = req.query.search || '';
+
+  try {
+    const studentList = await filterStudentByName(search);
+
+    res.render('studentFilter', {
+      studentList,
+      search,
+      message: studentList.length === 0 ? 'No students found.' : null,
+    });
+  } catch (err) {
+    console.error('Filter Error:', err);
+    res.status(500).send('Server Error while filtering students');
+  }
+};
 
 
 

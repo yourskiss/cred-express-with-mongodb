@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+  <title>Student List</title>
+</head>
+<body>
+    <h1>Student List</h1>
+    <p>
+        <a href="/student-add">Add New Student</a>
+         &nbsp; ||  &nbsp; 
+        <a href="/students">View All Student</a>
+    </p>
+
+    <!-- Search Form -->
+    <form method="GET" action="/student-filter">
+        <input 
+            type="text" 
+            name="search" 
+            placeholder="Search by name" 
+            value="<%= search ? search : '' %>"
+        />
+        <button type="submit">Search</button>
+        <br> <br>
+    </form>
+
+    <% if (message) { %>
+        <p><%= message %></p>
+    <% } else { %>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+        <th>SN</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        </tr>
+
+        <% studentList.map((stud, index) => { %>
+        <tr>
+            <td><%= index + 1 %></td>
+            <td><%= stud.fullname %></td>
+            <td><%= stud.email %></td>
+            <td><%= stud.mobile %></td>
+        </tr>
+        <% }) %>
+    </table>
+    <% }   %>
+
+
+</body>
+</html>
