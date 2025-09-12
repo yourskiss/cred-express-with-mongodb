@@ -37,6 +37,21 @@ export async function filterStudentByName(search = '') {
   return await db.collection(collection_student).find(query).toArray();
 }
 
+// paging student
+export async function pagingStudent(page = 1, limit = 3) {
+  const db = await connectDB();
+  const skip = (page - 1) * limit;
+  const students = await db
+    .collection(collection_student)
+    .find({})
+    .skip(skip)
+    .limit(limit)
+    .toArray();
+  const total = await db.collection(collection_student).countDocuments();
+  
+  return { students, total };
+}
+
 
 // show student by name
 export async function findStudentByName(name) {

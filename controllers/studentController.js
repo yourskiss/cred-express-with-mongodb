@@ -1,5 +1,5 @@
  import { ObjectId } from 'mongodb';
-import { addNewStudent, getAllStudent, filterStudentByName, findStudentByName, deleteStudentById, findStudentById, updateStudentById } from "../models/studentModel.js";
+import { addNewStudent, getAllStudent, filterStudentByName, pagingStudent, findStudentByName, deleteStudentById, findStudentById, updateStudentById } from "../models/studentModel.js";
 
 
 
@@ -31,6 +31,28 @@ export const FilerStudent = async (req, res) => {
     res.status(500).send('Server Error while filtering students');
   }
 };
+
+
+// pagination student
+export const paginationStudent = async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 3;
+
+  try {
+    const { students, total } = await pagingStudent(page, limit);
+    const totalPages = Math.ceil(total / limit);
+
+    res.render('studentPagination', {
+      studentList: students,
+      currentPage: page,
+      totalPages
+    });
+  } catch (err) {
+    console.error('Pagination Error:', err);
+    res.status(500).send('Server Error while paginating students');
+  } 
+};
+
 
 
 

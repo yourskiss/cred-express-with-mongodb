@@ -2,8 +2,7 @@ import { Router } from "express";
 const router = Router();
 import { 
     StudentFormShow, StudentFormSubmit, 
-    ShowAllStudent, 
-    FilerStudent,
+    ShowAllStudent, FilerStudent, paginationStudent,
     ShowStudentByName, ShowStudentById,
     DeleteStudentById,  
     EditStudentFormShow, EditStudentFormSubmit
@@ -16,6 +15,9 @@ router.post('/student-form-submit', StudentFormSubmit);
 router.get('/students', ShowAllStudent);
 router.get('/', ShowAllStudent);
 router.get('/student-filter', FilerStudent);
+router.get('/student-pagination', paginationStudent);
+
+
 
 router.get('/student-view/:fullname', ShowStudentByName);
 router.get('/student-detail/:id', ShowStudentById);

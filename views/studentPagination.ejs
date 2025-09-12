@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+  <title>Student Paging</title>
+</head>
+<body>
+  <h1>Student Paging</h1>
+  <p>
+    <a href="/students">Back</a>
+  </p>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+      <tr>
+        <th>SN</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+      </tr>
+    <% studentList.map((stud,index) => { %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= stud.fullname %></td>
+        <td><%= stud.email %></td>
+        <td><%= stud.mobile %></td>
+      </tr>
+    <% }) %>
+  </table>
+
+  <% if (totalPages > 1) { %>
+    <div style="margin-top: 20px;">
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <% if (i === currentPage) { %>
+          <strong><%= i %></strong>
+        <% } else { %>
+          <a href="/student-pagination?page=<%= i %>"><%= i %></a>
+        <% } %>
+        &nbsp;
+      <% } %>
+    </div>
+  <% } %>
+
+
+</body>
+</html>
