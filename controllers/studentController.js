@@ -1,5 +1,6 @@
  import { ObjectId } from 'mongodb';
 import { addNewStudent, getAllStudent, filterStudentByName, pagingStudent, findStudentByName, deleteStudentById, findStudentById, updateStudentById } from "../models/studentModel.js";
+import { _isoDate } from 'zod/v4/core';
 
 
 
@@ -45,7 +46,8 @@ export const paginationStudent = async (req, res) => {
     res.render('studentPagination', {
       studentList: students,
       currentPage: page,
-      totalPages
+      totalPages,
+      limit
     });
   } catch (err) {
     console.error('Pagination Error:', err);
@@ -103,7 +105,8 @@ export const StudentFormSubmit = async (req, res) => {
     if (!fullname || !email || !mobile ) {
       return res.status(400).send('All fields are required');
     }
-    const student = { fullname, email, mobile } 
+ 
+    const student = { fullname, email, mobile, 'createdOn':new Date() } 
     const result = await addNewStudent(student);
     if (!result.insertedId) return res.status(500).send('Error❌ : Insertion failed');
     // res.render('studentSuccess', { student });
@@ -170,10 +173,12 @@ export const EditStudentFormSubmit = async (req, res) => {
     return res.status(404).send('Edit Submit ==> Student not found');
   }
 
+
   const updatedData = {
     fullname: req.body.fullname || existingStudent.fullname,
     email: req.body.email === existingStudent.email || !req.body.email ? existingStudent.email : req.body.email,
     mobile: req.body.mobile === existingStudent.mobile || !req.body.mobile ? existingStudent.mobile : req.body.mobile,
+    'updatedOn':new Date()
   };
 
   const result = await updateStudentById(id, updatedData);

@@ -24,6 +24,8 @@
         <th>Name</th>
         <th>Email</th>
         <th>Mobile</th>
+        <th>Created</th>
+        <th>Updated</th>
         <th>Action</th>
       </tr>
     <% studentList.map((stud,index) => { %>
@@ -32,6 +34,8 @@
         <td><%= stud.fullname %></td>
         <td><%= stud.email %></td>
         <td><%= stud.mobile %></td>
+        <td><%= stud.createdOn %></td>
+        <td><%= stud.updatedOn %></td>
         <td>
           <a href="/student-view/<%= stud.fullname.toLowerCase().replace(/ /g, '-') %>">View by name</a>
            &nbsp; | &nbsp; 

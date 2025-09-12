@@ -21,7 +21,7 @@
       </tr>
     <% studentList.map((stud,index) => { %>
       <tr>
-        <td><%= index+1 %></td>
+        <td><%= index + 1 + ((currentPage - 1) * limit) %></td>
         <td><%= stud.fullname %></td>
         <td><%= stud.email %></td>
         <td><%= stud.mobile %></td>
@@ -33,9 +33,9 @@
     <div style="margin-top: 20px;">
       <% for (let i = 1; i <= totalPages; i++) { %>
         <% if (i === currentPage) { %>
-          <strong><%= i %></strong>
+          <strong  style="padding:3px 7px; background:#f30; color: #fff; text-decoration: none;"><%= i %></strong>
         <% } else { %>
-          <a href="/student-pagination?page=<%= i %>"><%= i %></a>
+          <a href="/student-pagination?page=<%= i %>" style="padding:3px 7px; background:#cdcdcd; color:#000; text-decoration: none;"><%= i %></a>
         <% } %>
         &nbsp;
       <% } %>

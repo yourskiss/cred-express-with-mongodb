@@ -1,5 +1,5 @@
 <h3>
-This project is built using Express.js and MongoDB (hosted on MongoDB Atlas).  <br />
+This project is built using Express.js(render.com) and MongoDB (MongoDB Atlas).  <br />
 It follows the MVC (Model-View-Controller) pattern and supports basic CRUD operations to manage student records efficiently.
 </h3>
 
