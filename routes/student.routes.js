@@ -13,6 +13,7 @@ router.get('/student-add', StudentFormShow);
 router.post('/student-form-submit', StudentFormSubmit);  
 
 router.get('/students', ShowAllStudent);
+router.get('/', ShowAllStudent);
 
 router.get('/student-view/:fullname', ShowStudentByName);
 router.get('/student-detail/:id', ShowStudentById);

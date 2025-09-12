@@ -3,6 +3,7 @@ import { addNewStudent, getAllStudent, findStudentByName, deleteStudentById, fin
 
 
 
+
 // show all student  
 export const ShowAllStudent = async (req, res) => {
     const studentList = await getAllStudent();
@@ -12,6 +13,8 @@ export const ShowAllStudent = async (req, res) => {
     res.render('studentList', { studentList });
 }
  
+
+
 
 // show student by name
 export const ShowStudentByName = async (req, res) => {
@@ -23,6 +26,8 @@ export const ShowStudentByName = async (req, res) => {
   }
   res.render('studentView', { student });
 }
+
+
 
 
 
@@ -41,13 +46,17 @@ export const ShowStudentById = async (req, res) => {
 
 
 
+
+
 // show add student form
 export const StudentFormShow = (req, res) => {
   res.render('studentAdd');
 };
 
 
-// submit student form
+
+
+// submit add student form
 export const StudentFormSubmit = async (req, res) => {
   try {
     const { fullname, email, mobile } = req.body;
@@ -59,7 +68,6 @@ export const StudentFormSubmit = async (req, res) => {
     if (!result.insertedId) return res.status(500).send('Error❌ : Insertion failed');
     // res.render('studentSuccess', { student });
     //res.send('success');
-
     res.redirect("/students")
   } catch (error) {
      if (error.message.includes('exists') || error.code === 11000) {
@@ -68,6 +76,9 @@ export const StudentFormSubmit = async (req, res) => {
     res.status(500).send('Error❌ : ' + error.message);
   }
 };
+
+
+
 
 
 

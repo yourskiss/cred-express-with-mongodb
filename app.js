@@ -20,9 +20,9 @@ app.set("view engine", "ejs"); // template engine
 
 
 // normal
-app.get("/",(req, res) => {
-    res.send(`<h1>Welcome to Expressjs</h1>`);
-});
+// app.get("/",(req, res) => {
+//     res.send(`<h1>Welcome to Expressjs</h1>`);
+// });
 
 // mvc
 app.get('/users', GetUsers);
