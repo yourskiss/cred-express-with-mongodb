@@ -43,10 +43,17 @@
            &nbsp; | &nbsp; 
           <a href="/student-edit/<%= stud._id %>">Edit</a>
            &nbsp; | &nbsp; 
-          <a href="/student-delete/<%= stud._id %>">Delete</a>
+          <a href="/student-delete/<%= stud._id %>" onclick="return confirmDelete()">Delete</a>
         </td>
       </tr>
     <% }) %>
   </table>
+
+
+<script>
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete this student?");
+  }
+</script>
 </body>
 </html>
