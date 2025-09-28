@@ -77,7 +77,6 @@ db.collection.getIndexes(); <br />
 
 
 <h2>Status Code</h2>
-<br /><br />
 <h4> Success</h4>
 200 OK - The request was successful and the response contains the requested data.<br /> 
 res.status(200).json({ message: "Success", data });
@@ -88,7 +87,7 @@ res.status(201).json({ message: "User created", user });
 204 No Content - The request was successful but there's no content to return.<br /> 
 res.status(204).send();
 
-<br /><br /><br /> 
+<br /><br />
 
 <h4> Redirection </h4> 
 301 Moved Permanently -  A resource has been permanently moved to a new URL.<br /> 
@@ -97,7 +96,7 @@ res.redirect(301, "https://newdomain.com");
 302 Found - Temporary redirect.<br /> 
 res.redirect(302, "/login");
 
-<br /><br /><br /> 
+<br /><br />
 
  
 <h4> Client Errors</h4>
@@ -119,7 +118,7 @@ res.status(409).json({ error: "User already exists" });
 422 Unprocessable Entity - Validation errors in input data.<br /> 
 res.status(422).json({ error: "Validation failed", details });
 
-<br /><br /><br /> 
+<br /><br /> 
 
 <h4> Server Errors</h4>
 500 Internal Server Error - Unexpected server error.<br /> 
